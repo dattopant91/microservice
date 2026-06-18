@@ -1,0 +1,57 @@
+<div class="form-container">
+  <div class="form-box">
+    <h2>{{ isEditMode ? 'Update Employee Profile' : 'Register New Employee' }}</h2>
+    <p class="subtitle">Enter enterprise directory details</p>
+
+    <form (ngSubmit)="saveUser()">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" name="fullName" [(ngModel)]="user.fullName" placeholder="e.g. John Doe" required>
+      </div>
+
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" name="email" [(ngModel)]="user.email" placeholder="e.g. john@enterprise.com" required>
+      </div>
+
+      <div class="form-group">
+        <label>Username (For Login)</label>
+        <input type="text" name="username" [(ngModel)]="user.username" placeholder="Choose unique username" required>
+      </div>
+
+      <div class="form-group" *ngIf="!isEditMode">
+        <label>Password</label>
+        <input type="text" name="password" [(ngModel)]="user.password" placeholder="Enter password" required>
+      </div>
+
+      <div style="display: flex; gap: 10px;">
+        <div class="form-group" style="flex: 1;">
+          <label>Department</label>
+          <select name="department" [(ngModel)]="user.department" style="width: 100%; padding: 12px; border: 1px solid #cbd5e0; border-radius: 6px; background: white;">
+            <option value="IT Department">IT Dept</option>
+            <option value="HR Department">HR Dept</option>
+            <option value="Finance Department">Finance Dept</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="flex: 1;">
+          <label>Salary (INR)</label>
+          <input type="number" name="salary" [(ngModel)]="user.salary" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>System Role</label>
+        <select name="role" [(ngModel)]="user.role" style="width: 100%; padding: 12px; border: 1px solid #cbd5e0; border-radius: 6px; background: white;">
+          <option value="USER">USER</option>
+          <option value="ADMIN">ADMIN</option>
+        </select>
+      </div>
+
+      <div class="action-buttons">
+        <button type="submit" class="btn-save">Save Employee</button>
+        <button type="button" routerLink="/dashboard" class="btn-cancel">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

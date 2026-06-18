@@ -1,0 +1,28 @@
+<div class="login-container">
+  <div class="login-box">
+    <h2>Welcome Back</h2>
+    <p class="subtitle">Please enter your enterprise credentials</p>
+
+    <div *ngIf="errorMessage" class="alert-danger">
+      ⚠️ {{ errorMessage }}
+    </div>
+
+    <form (ngSubmit)="handleLogin()">
+      <div class="form-group">
+        <label>Username</label>
+        <input type="text" name="username" [(ngModel)]="credentials.username" placeholder="e.g. admin" required>
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" name="password" [(ngModel)]="credentials.password" placeholder="••••••••" required>
+      </div>
+
+      <button type="submit" class="btn-login">Authenticate</button>
+    </form>
+
+    <div class="footer-links">
+      <a routerLink="/">← Return to Home</a>
+    </div>
+  </div>
+</div>

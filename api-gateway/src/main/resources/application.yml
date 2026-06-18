@@ -9,24 +9,34 @@ spring:
       globalcors:
         cors-configurations:
           '[/**]':
-            allowedOrigins: "http://localhost:4200" # अँगुलरचा पत्ता
+            allowedOrigins: "http://localhost:4200"
             allowedMethods:
               - GET
               - POST
               - PUT
               - DELETE
+              - OPTIONS
             allowedHeaders: "*"
-      routes:
+            allowCredentials: true
+      routes: 
+        - id: auth-route
+          uri: lb://employee-service
+          predicates:
+            - Path=/auth/**
+
         - id: employee-service
           uri: lb://employee-service 
           predicates:
-            - Path=/api/employees/** 
-            
-            # next api-gateway.yml file
-        # - id: employee-service
-        #   uri: lb://employee-service 
-        #   predicates:
-        #     - Path=/api/employees/** 
+            - Path=/api/employees/**
+          filters:
+            - AuthenticationFilter
+
+        - id: user-controller-route
+          uri: lb://employee-service
+          predicates:
+            - Path=/users/**
+          filters:
+            - AuthenticationFilter
 
 eureka:
   client:

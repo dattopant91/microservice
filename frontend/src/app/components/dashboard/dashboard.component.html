@@ -1,0 +1,43 @@
+<div class="dashboard-wrapper">
+  <header class="navbar">
+    <div class="nav-brand">
+      <span class="brand-icon">⚡</span> CoreConsole
+    </div>
+    <div class="user-profile">
+      <div class="avatar">A</div>
+      <span class="welcome-text">Active User: <strong>{{ username }}</strong></span>
+      <button (click)="handleLogout()" class="btn-logout">Logout</button>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="welcome-banner">
+      <h1>Dashboard Overview</h1>
+      <p>Microservice status operational. Token verified via API Gateway successfully.</p>
+    </div>
+
+    <div class="stats-grid">
+      <div class="card">
+        <h3>Connected Gateway</h3>
+        <p class="status-online">Port 8080 Active</p>
+      </div>
+      <div class="card">
+        <h3>Employee Microservice</h3>
+        <p class="status-online">Connected</p>
+      </div>
+      <div class="card">
+        <h3>Security Protocol</h3>
+        <p class="security-badge">JWT HS256 Enabled</p>
+      </div>
+    </div>
+
+    <div class="data-table-container">
+      <h3>Employee Management Table</h3>
+      <p style="color: #718096; font-size: 14px;">Your dynamic database rows from `employee-service` will load here
+        seamlessly.</p>
+    </div>
+    <div style="margin-top: 30px;">
+  <app-user-list></app-user-list>
+</div>
+  </main>
+</div>

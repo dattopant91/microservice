@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="header-section">
+    <h2>User & Employee Directory</h2>
+    <button (click)="navigateToAdd()" class="btn-add">+ Add New User</button>
+  </div>
+
+  <div class="table-responsive">
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Full Name</th>
+          <th>Email</th>
+          <th>Department</th>
+          <th>Salary</th>
+          <th>Role</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+        <tr *ngFor="let user of users">
+          <td>{{ user.id }}</td>
+          <td><strong>{{ user.fullName }}</strong> <br><small style="color: #a0aec0;">@{{ user.username }}</small></td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.department }}</td>
+          <td>₹{{ user.salary | number }}</td>
+          <td><span class="role-badge">{{ user.role }}</span></td>
+          <td>
+            <button (click)="navigateToEdit(user.id)" class="btn-action btn-edit">Edit</button>
+            <button (click)="deleteUser(user.id)" class="btn-action btn-delete">Delete</button>
+          </td>
+        </tr>
+        <tr *ngIf="users.length === 0">
+          <td colspan="4" style="text-align: center; color: #a0aec0; padding: 30px;">No users found in database.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
